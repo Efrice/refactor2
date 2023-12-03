@@ -7,7 +7,8 @@ import invoices from '../data/invoices.json'
 // import { statement } from '../step3.js'
 // import { statement } from '../step4.js'
 // import { statement } from '../step5.js'
-import { statement } from '../step6.js'
+// import { statement } from '../step6.js'
+import { statement } from '../step7.js'
 
 test('statement', () => {
   const result = statement(invoices[0], plays)
