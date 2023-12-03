@@ -34,7 +34,9 @@ import invoices from '../data/invoices.json'
 // import { statement } from '../step30/statement.js'
 // import { statement } from '../step31/statement.js'
 // import { statement } from '../step32/statement.js'
-import { statement } from '../step33/statement.js'
+// import { statement } from '../step33/statement.js'
+import { statement } from '../end/statement.js'
+import { createStatementData } from '../end/createStatementData.js'
 
 test('statement', () => {
   const result = statement(invoices[0], plays)
@@ -46,5 +48,48 @@ test('statement', () => {
     Amount owed is $1,730.00
     You earned 47 credits
     "
+  `)
+})
+
+test('createStatementData', () => {
+  const result = createStatementData(invoices[0], plays)
+  expect(result).toMatchInlineSnapshot(`
+    {
+      "customer": "BigCo",
+      "performances": [
+        {
+          "amount": 65000,
+          "audience": 55,
+          "play": {
+            "name": "Hamlet",
+            "type": "tragedy",
+          },
+          "playID": "hamlet",
+          "volumeCredits": 25,
+        },
+        {
+          "amount": 58000,
+          "audience": 35,
+          "play": {
+            "name": "As You Like It",
+            "type": "comedy",
+          },
+          "playID": "as-like",
+          "volumeCredits": 12,
+        },
+        {
+          "amount": 50000,
+          "audience": 40,
+          "play": {
+            "name": "Othello",
+            "type": "tragedy",
+          },
+          "playID": "othello",
+          "volumeCredits": 10,
+        },
+      ],
+      "totalAmount": 173000,
+      "totalVolumeCredits": 47,
+    }
   `)
 })
